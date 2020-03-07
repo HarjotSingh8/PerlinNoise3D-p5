@@ -3,8 +3,9 @@ let offset = 0;
 let n;
 let width = 300;
 let height = 300;
-let factor1 = 100;
-let factor2 = 20;
+let d;
+//let factor1 = 100;
+//let factor2 = 20;
 function setup() {
   width = windowWidth;
   //width = windowHeight;
@@ -12,6 +13,7 @@ function setup() {
   createCanvas(width, height);
   frameRate(60);
   noStroke();
+  d = pixelDensity();
   //noLoop();
 }
 
@@ -20,7 +22,8 @@ function draw() {
   loadPixels();
   for (let i = 0; i < width; i++) {
     for (let j = 0; j < height; j++) {
-      index = 4 * (j * width + i);
+      //index = 4 * (j * width + i);
+      index = 4 * (j * d * width * d + i * d);
       n = noise(i / 50 + offset, j / 50, offset) * 255;
       let falloff = width / 2 - i;
       if (falloff < 0) {
