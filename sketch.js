@@ -13,9 +13,11 @@ function setup() {
   createCanvas(width, height);
   frameRate(60);
   noStroke();
-  pixelDensity(1);
+  _pixelDensity = 1;
+  //pixelDensity(1);
   d = pixelDensity();
-
+  height *= d;
+  width *= d;
   //noLoop();
 }
 
@@ -25,7 +27,7 @@ function draw() {
   for (let i = 0; i < width; i++) {
     for (let j = 0; j < height; j++) {
       //index = 4 * (j * width + i);
-      index = 4 * (j * d * width * d + i * d);
+      index = 4 * (j * width + i);
       n = noise(i / 50 + offset, j / 50, offset) * 255;
       let falloff = width / 2 - i;
       if (falloff < 0) {
