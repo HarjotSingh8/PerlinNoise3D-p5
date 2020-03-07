@@ -13,7 +13,9 @@ function setup() {
   createCanvas(width, height);
   frameRate(60);
   noStroke();
+  pixelDensity(1);
   d = pixelDensity();
+
   //noLoop();
 }
 
